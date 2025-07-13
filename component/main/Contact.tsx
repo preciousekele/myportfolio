@@ -12,8 +12,23 @@ import {
   RxEnvelopeClosed,
 } from 'react-icons/rx';
 
+// Define types
+interface FormData {
+  firstName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface SocialLink {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  url: string;
+  color: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: '',
     email: '',
     subject: '',
@@ -23,7 +38,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log('Input change:', e.target.name, e.target.value);
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -32,50 +47,52 @@ const Contact = () => {
     }));
   };
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setShowSuccess(false);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setShowSuccess(false);
 
-  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
-  try {
-    const result = await emailjs.send(
-      serviceId,
-      templateId,
-      {
+    try {
+      const templateParams = {
         from_name: formData.firstName,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-      },
-      publicKey
-    );
+      };
 
-    console.log('Email sent:', result.text);
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
 
-    // Reset form
-    setFormData({
-      firstName: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+      console.log('Email sent:', result.text);
 
-    // Show success
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 5000);
-  } catch (error) {
-    console.error('Email failed:', error);
-    alert('Oops! Message failed to send. Please try again.');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+      // Reset form
+      setFormData({
+        firstName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
 
-  const socialLinks = [
+      // Show success
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000);
+    } catch (error) {
+      console.error('Email failed:', error);
+      alert('Oops! Message failed to send. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const socialLinks: SocialLink[] = [
     {
       name: 'Email',
       icon: RxEnvelopeClosed,
@@ -108,7 +125,7 @@ const Contact = () => {
     },
   ];
 
-  const handleSocialClick = (url, name) => {
+  const handleSocialClick = (url: string, name: string) => {
     console.log('Social link clicked:', name, url);
     try {
       if (url.startsWith('mailto:')) {
@@ -137,7 +154,7 @@ const Contact = () => {
             </div>
 
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4 px-2">
-              I will read all emails. Send me any message you want and I'll get back to you.
+              I will read all emails. Send me any message you want and I will get back to you.
             </p>
 
             <div className="space-y-1 mb-4 sm:mb-6">
@@ -269,7 +286,7 @@ const Contact = () => {
 
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed">
-                I will read all emails. Send me any message you want and I'll get back to you.
+                I will read all emails. Send me any message you want and I will get back to you.
               </p>
 
               <div className="space-y-2">

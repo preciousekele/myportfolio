@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import StarsCanvas from "@/component/main/StarBackground";

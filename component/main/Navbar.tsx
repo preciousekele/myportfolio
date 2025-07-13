@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navbarRef = useRef(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,8 +14,8 @@ const Navbar = () => {
 
   // Close menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };

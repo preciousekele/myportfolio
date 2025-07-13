@@ -15,7 +15,7 @@ const Hero = () => {
       </video>
       
       {/* Gradient background for small screens that overlays everything */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-purple-900/30 via-black to-purple-900/30 z-[10]" />
+      <div className="md:hidden absolute" />
       
       {/* Content container with higher z-index and right alignment */}
         <HeroContent />

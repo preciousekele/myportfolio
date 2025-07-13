@@ -11,8 +11,8 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden pb-80 pt-20 sm:py-20 px-4 sm:px-6 lg:px-8"
-      style={{ scrollMarginTop: '120px' }}
+      className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden pb-20 md:pb-50 pt-20 md:pt-24 px-4 sm:px-6 lg:px-8"
+      style={{ scrollMarginTop: '100px' }}
     >
       <SkillText />
       

@@ -140,8 +140,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-[#030014] text-white relative z-50" id="contact">
-      <div className="container mx-auto px-3 py-4 sm:px-4 sm:py-8 lg:py-20 relative z-50">
+    <div className="bg-[#030014] text-white relative z-40" id="contact">
+      <div className="container mx-auto px-3 py-4 sm:px-4 sm:py-8 lg:py-20 relative z-40">
         {/* Mobile Layout - Single Column */}
         <div className="block lg:hidden">
           {/* Header */}
@@ -168,7 +168,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-black/50 backdrop-blur-sm rounded-lg sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-gray-800 mb-4 sm:mb-6 relative z-50">
+          <div className="bg-black/50 backdrop-blur-sm rounded-lg sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-gray-800 mb-4 sm:mb-6 relative z-40">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-center">Send Me A Message</h2>
 
             {/* Success Message */}
@@ -180,7 +180,7 @@ const Contact = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 relative z-50">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 relative z-40">
               <div className="space-y-3 sm:space-y-4">
                 <div>
                   <input
@@ -190,7 +190,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="First Name"
                     required
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-900 border border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-white placeholder-gray-400 relative z-50 text-sm sm:text-base"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-900 border border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-white placeholder-gray-400 relative z-40 text-sm sm:text-base"
                     autoComplete="given-name"
                   />
                 </div>
@@ -202,7 +202,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Email Address"
                     required
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-900 border border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-white placeholder-gray-400 relative z-50 text-sm sm:text-base"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-900 border border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-white placeholder-gray-400 relative z-40 text-sm sm:text-base"
                     autoComplete="email"
                   />
                 </div>
@@ -261,7 +261,7 @@ const Contact = () => {
                   <button
                     key={social.name}
                     onClick={() => handleSocialClick(social.url, social.name)}
-                    className={`p-2 sm:p-2.5 md:p-3 bg-gray-800 rounded-lg transition-all duration-300 ${social.color} hover:shadow-lg border border-transparent hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
+                    className={`p-2 sm:p-2.5 md:p-3 bg-gray-800 rounded-lg transition-all duration-300 ${social.color} hover:shadow-lg border border-transparent hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 relative z-40`}
                     aria-label={social.name}
                     title={social.name}
                   >
@@ -310,7 +310,7 @@ const Contact = () => {
                     <button
                       key={social.name}
                       onClick={() => handleSocialClick(social.url, social.name)}
-                      className={`p-3 bg-gray-800 rounded-lg transition-all duration-300 ${social.color} border border-transparent hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
+                      className={`p-3 bg-gray-800 rounded-lg transition-all duration-300 ${social.color} border border-transparent hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 relative z-40`}
                       aria-label={social.name}
                       title={social.name}
                     >

@@ -1,6 +1,5 @@
 "use client";
 
-import { Socials } from "@/constants";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -31,10 +30,22 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  
+  
+
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Precious Ekele Resume.pdf';
+    link.download = '/Precious Ekele Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div 
       ref={navbarRef}
-      className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#030014] backdrop-blur-md z-50 px-4 md:px-10 border-b border-[#7042f861]"
+      className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#030014]/90 backdrop-blur-md z-[100] px-4 md:px-10 border-b border-[#7042f861]"
     >
       <div className="w-full h-full flex flex-row items-center justify-between m-auto px-[10px]">
         
@@ -64,6 +75,9 @@ const Navbar = () => {
             <a href="#skills" className="cursor-pointer text-sm lg:text-base hover:text-white transition-colors">
               Skills
             </a>
+            <a href="#services" className="cursor-pointer text-sm lg:text-base hover:text-white transition-colors">
+              Services
+            </a>
             <a href="#projects" className="cursor-pointer text-sm lg:text-base hover:text-white transition-colors">
               Projects
             </a>
@@ -76,84 +90,84 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 z-[110]"
         >
           <span className={`block w-6 h-0.5 bg-gray-300 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
           <span className={`block w-6 h-0.5 bg-gray-300 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
           <span className={`block w-6 h-0.5 bg-gray-300 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
 
-        {/* Desktop Social Icons */}
-        <div className="hidden md:flex flex-row gap-5">
-          {Socials.map((social) => (
-            <a
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={social.name}
-              className="hover:opacity-80 transition-opacity cursor-pointer"
-            >
-              <Image
-                src={social.src}
-                alt={social.name}
-                width={24}
-                height={24}
-              />
-            </a>
-          ))}
+        {/* Desktop Social Icons and Resume */}
+        <div className="hidden md:flex flex-row gap-5 items-center">
+          
+          {/* Resume Download Button */}
+          <button
+            onClick={handleResumeDownload}
+            className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2"
+          >
+            Résumé
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 16L7 11L8.4 9.6L11 12.2V4H13V12.2L15.6 9.6L17 11L12 16Z" fill="currentColor"/>
+              <path d="M5 20V18H19V20H5Z" fill="currentColor"/>
+            </svg>
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-[65px] left-0 w-full bg-[#030014] backdrop-blur-md border-t border-[#7042f861] transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+      <div className={`md:hidden absolute top-[65px] left-0 w-full bg-[#030014]/90 backdrop-blur-md border-t border-[#7042f861] transition-all duration-300 z-[100] ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <div className="flex flex-col py-4 px-6 space-y-4">
           <a 
             href="#about-me" 
-            className="text-gray-200 hover:text-white transition-colors py-2 text-center"
+            className="text-gray-100 hover:text-white transition-colors py-2 text-center"
             onClick={() => setIsMenuOpen(false)}
           >
             About
           </a>
           <a 
             href="#skills" 
-            className="text-gray-200 hover:text-white transition-colors py-2 text-center"
+            className="text-gray-100 hover:text-white transition-colors py-2 text-center"
             onClick={() => setIsMenuOpen(false)}
           >
             Skills
           </a>
           <a 
+            href="#services" 
+            className="text-gray-100 hover:text-white transition-colors py-2 text-center"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Services
+          </a>
+          <a 
             href="#projects" 
-            className="text-gray-200 hover:text-white transition-colors py-2 text-center"
+            className="text-gray-100 hover:text-white transition-colors py-2 text-center"
             onClick={() => setIsMenuOpen(false)}
           >
             Projects
           </a>
           <a 
             href="#contact" 
-            className="text-gray-200 hover:text-white transition-colors py-2 text-center"
+            className="text-gray-100 hover:text-white transition-colors py-2 text-center"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            Contact Me
           </a>
           
-          {/* Mobile Social Icons */}
-          <div className="flex flex-row gap-5 justify-center pt-4 border-t border-[#7042f861]">
-            {Socials.map((social) => (
-              <a
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={social.name}
-                className="hover:opacity-80 transition-opacity cursor-pointer"
-              >
-                <Image
-                  src={social.src}
-                  alt={social.name}
-                  width={24}
-                  height={24}
-                />
-              </a>
-            ))}
+          <div className="flex flex-col items-center pt-3">
+            <div className="flex flex-row gap-5 justify-center">
+            </div>
+            
+            {/* Mobile Resume Download Button */}
+            <button
+              onClick={handleResumeDownload}
+              className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2"
+            >
+              Résumé
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16L7 11L8.4 9.6L11 12.2V4H13V12.2L15.6 9.6L17 11L12 16Z" fill="currentColor"/>
+                <path d="M5 20V18H19V20H5Z" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

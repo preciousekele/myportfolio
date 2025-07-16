@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  // Hooks must be called unconditionally at the top
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -11,7 +14,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
@@ -19,24 +21,24 @@ const Navbar = () => {
       }
     };
 
-    // Only add event listener when menu is open
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup event listener
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
 
-  
-  
+  // Move the conditional return after all hooks
+  if (pathname?.startsWith('/project')) {
+    return null;
+  }
 
   const handleResumeDownload = () => {
     const link = document.createElement('a');
     link.href = '/Precious Ekele Resume.pdf';
-    link.download = '/Precious Ekele Resume.pdf';
+    link.download = 'Precious Ekele Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

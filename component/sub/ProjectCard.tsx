@@ -11,7 +11,7 @@ interface Props {
 
 const ProjectCard = ({ src, title, description, href }: Props) => {
   return (
-    <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full hover:scale-105 transition-transform duration-300 group">
+    <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full hover:scale-105 transition-transform duration-300 group focus-within:scale-105">
       <div className="h-60 overflow-hidden relative">
         <Image
           src={src}
@@ -23,7 +23,7 @@ const ProjectCard = ({ src, title, description, href }: Props) => {
         
         <Link 
           href={href} 
-          className="absolute top-4 right-4 bg-blue-800 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer hover:bg-blue-900"
+          className="absolute top-4 right-4 bg-blue-800 p-2 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 cursor-pointer hover:bg-blue-900"
         >
           <svg 
             width="16" 

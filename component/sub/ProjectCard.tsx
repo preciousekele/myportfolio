@@ -23,7 +23,7 @@ const ProjectCard = ({ src, title, description, href }: Props) => {
         
         <Link 
           href={href} 
-          className="absolute top-4 right-4 bg-blue-800 p-2 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 cursor-pointer hover:bg-blue-900"
+          className="absolute top-4 right-4 bg-blue-800 p-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 cursor-pointer hover:bg-blue-900"
         >
           <svg 
             width="16" 

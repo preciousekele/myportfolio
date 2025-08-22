@@ -139,6 +139,10 @@ const Contact = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="bg-[#030014] text-white relative z-40" id="contact">
       <div className="container mx-auto px-3 py-4 sm:px-4 sm:py-8 lg:py-20 relative z-40">
@@ -403,6 +407,20 @@ const Contact = () => {
               </button>
             </form>
           </div>
+        </div>
+        
+        {/* Scroll to Top Button - Updated with responsive sizing */}
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-4 transition-colors duration-300 flex items-center justify-center mt-4"
+            title="Scroll to top"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>

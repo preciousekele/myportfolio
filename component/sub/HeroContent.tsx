@@ -42,7 +42,7 @@ const HeroContent = () => {
                 <motion.p
                     variants={slideInFromLeft(0.8)}
                     className="text-base sm:text-lg lg:text-xl text-gray-400 my-3 sm:my-5 max-w-[650px] leading-relaxed">
-                    I&apos;m a FullStack Developer with experience in Development of Websites with Frontend and Backend Functionalities. Check out my projects and skills
+                    I&apos;m a Full-Stack Developer specializing in building modern, full-featured web applications. I bring ideas to life by engineering seamless user experiences on the front-end and robust, scalable functionality on the back-end. Explore my projects to see my skills in action.
                 </motion.p>
                 {/* <motion.a
                     variants={slideInFromLeft(1)}

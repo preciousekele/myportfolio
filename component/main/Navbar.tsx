@@ -5,7 +5,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-  // Hooks must be called unconditionally at the top
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -51,7 +50,6 @@ const Navbar = () => {
     >
       <div className="w-full h-full flex flex-row items-center justify-between m-auto px-[10px]">
         
-        {/* Logo Section */}
         <a
           href="#about-me"
           className="h-auto w-auto flex flex-row items-center"
